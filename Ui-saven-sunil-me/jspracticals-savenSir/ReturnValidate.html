@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form onsubmit="return validate(this)">
+        Enter Name<input type="text" name="name"><br>
+        Enter Password:<input type="password" name="pwd">
+        <input type="submit" name="" value="Submit">
+    </form>
+
+    <script type="text/javascript">
+        function validate(frm) {
+            a = frm.name.value;
+            b = frm.pwd.value;
+            var flag = true;
+            if (a == '') {
+                alert("please enter the Name");
+                flag = false;
+            } if (b == '') {
+                alert("password cannot null");
+                flag = false;
+            }
+            return flag;
+        }
+    </script>
+</body>
+
+</html>

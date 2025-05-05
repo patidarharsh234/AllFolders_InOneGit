@@ -1,0 +1,27 @@
+public abstract class BaseServiceImpl<T extends BaseDTO, D extends BaseDAOInt<T>> {
+
+public abstract class BaseDAOImpl<T extends BaseDTO> implements BaseDAOInt<T>
+
+public interface BaseServiceInt<T extends BaseDTO> {
+
+public interface BaseDAOInt<T extends BaseDTO> {
+..............................................................
+
+public class UserServiceImpl extends BaseServiceImpl<UserDTO, UserDAOInt> implements UserServiceInt {
+
+public interface UserServiceInt extends BaseServiceInt<UserDTO> {
+
+public class UserDAOImpl extends BaseDAOImpl<UserDTO> implements UserDAOInt {
+
+public interface UserDAOInt extends BaseDAOInt<UserDTO> {
+
+............................................................................................
+
+
+	practice 
+
+public interface BaseDAOInt<T extends BaseDTO>{}
+
+public abstract class BaseDAOImpl<T extends baseDTO> implements BaseDAOInt<T>{}
+
+public abstract classBaseServiceInt<T extends BaseDTO>

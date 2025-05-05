@@ -1,0 +1,49 @@
+<p>navbar works!</p>
+<style>
+    .dark-hr {
+      border-color: darkgray;
+    }
+  </style>
+
+<table width="100%" border="0">
+    <tr>
+        <td width="90%">
+            <!-- login and logout link -->
+            <a [routerLink]="['/dashbord']"><b>DashBoard</b></a> |
+
+            <ng-container *ngIf="isLogin(); else e1">
+                <a (click)="islogout();"><b>Logout</b></a>
+            </ng-container>
+            <ng-template #e1>
+                <a [routerLink]="['/login']"><b>Login</b></a>
+            </ng-template>
+        </td>
+<!-- ncs pic with dasboard -->
+        <td rowspan="2">
+            <a [routerLink]="['/dashbord']">
+                <img src="assets\files\logo.png" height="25px" width="120px" alt="Logo">
+            </a>
+        </td>
+
+    </tr>
+<!-- new row For welcome message AND links -->
+    <tr>
+        <td>
+            <ng-container *ngIf="isLogin(); else e2">
+                <a [routerLink]="['/login']">
+                <b>    Hi,{{form.data.firstName}} ({{form.data.role}})</b>
+                </a> |
+                <a [routerLink]="['/user']">Add User</a>|
+                <a [routerLink]="['/userList']">User List</a>
+
+            </ng-container>
+
+            <ng-template #e2>
+            <b>    Hi,Gest</b><br>
+            </ng-template>
+        </td>
+    </tr>
+
+
+</table>
+<hr class="dark-hr">

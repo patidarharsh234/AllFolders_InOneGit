@@ -1,0 +1,253 @@
+ Q 1. ORSResponse me kitni methods bnai h??[BE]
+
+Ans- we created 4 methods-
+  1. addData(object)
+  2. addInputError(object)
+  3. addMessage(object)
+  4. addResult(key,object) 
+
+Q 2. BE and FE pe Services kese or kyu bnai??
+Ans- FE- @Injectable decorator ka use kr k
+         Services provide reusability and we do AJAX calling through services.
+         AJAX -> Asynchronous JavaScript and XML
+         (ajax to send a HTML form request to a Spring REST API and return a JSON response)
+     BE- kese-@Service annotation se
+         kyu- to handle transactions and perform business operations.
+
+Q 3. How you handle the transations??
+Ans- By using annnotation @transactional over the service classes and methods.
+     @transactional me(readonly= True/False).
+     
+     @transactional(readonly= True) =>>>> findById() , findByUniqueKey() , search()
+     @transactional(readonly= False) =>>>> add()
+     @transactional(propogation = Propogation.REQUIRED) =>>>> Update() , save() , delete().
+
+     #true- we cn only read the data but cant rewrite/change the data.
+     #false- vise versa- over crud operation.
+
+Q 4. @Persistence - The Persistence is a bootstrap class which is used to obtain an EntityManagerFactory interface.
+
+     The EntityManagerFactory interface present in java.persistence package is used to provide an entity manager.
+
+     Entity manager is used to read, delete and write an entity.
+     Entity manager manages the entity.
+     An object referenced by an entity is managed by entity manager.
+      
+Q 5. BaseCtl me konsi methods bnai h??
+ans- validate()
+     delete(@pathvariable.)
+     deleteMany(@pathvariable,@requestParam)
+     search(@requestBody)
+     search(@requestBody,@pathvariable.)
+     get()
+     get(@pathvariable)
+     setUserContext()
+     save()
+
+Q 6. How you configure JPA??
+ans- adding dependency-spring-boot-starter-data-jpa in pom.xml
+     in application.property file- jpa ka configuration kiya h
+     spring.jpa.show_sql=true;
+     spring.jpa.properties.hibernate.format_sql = true;
+     spring.jpa.properties.hibernate.ddl_auto = update;
+     spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MariaDB53Dialect;
+     @PersistenceContext- in baseDAOImpl class over entityManager object,
+      it Injects EntityManager object to use jpa methods through EntityManager.
+      package- javax.persistence.PC
+     
+Q 7. API kese hit krwai and AJAX calling kese krwai??
+ans- Rest API is @RestController 
+     httpclient ki get or post method se.
+     API- Application programming Interface.
+     AJAX- Asynchronus Java Script and XML.
+     Rest-Representational State Transfer.
+
+Q 8. @MappedSuperClass annotation used
+ans- in BaseDTO class we use this annotation.
+
+     reason- so that BaseDTO attributes / variable should be provided to its child/sub classes 
+     and no table should be created for baseDTO.
+
+     package-javax.persistence.mappedsuperclass .
+
+Q 9. How we created NBPK?
+ans- first we take an private attribute id of long type in BaseDTO
+     denoted it by 
+  =>  @id - to create pk and iska column mapped hota pk tw usse as a pk assume krte h.
+  => @GenericValue(generator="Pkey")-
+     iske through we decide ki pk ki values kese generate krna chahte h through generator type-
+     1. increment
+     2. native
+     3. Hi-Lo k through
+     4. sequence Hi-lo
+     5. foriegn
+     6. Identity k through
+     in generator we decides the name of generator to be used in GenericGenerator
+  =>  @GenericGenerator(name="Pkey" , strategy="native")-decides the generator type - 1 to 6 in strategy
+       and the name is same assigned in generator of genericvalue 
+  =>  @Column(name="ID", unique=true , nullable=false)-
+        assign it as database column vd name ID 
+        unique = true - providing unique id,no duplicate accepted.
+        nullable = false - not null
+
+    package - javax.persistence for all abv annotations.
+
+Q 10. @Entity and @Table annotation used in which classes?
+ans- sabhi DTO classes me @Entity and  @Table is used
+     and @Column to define the column name of perticular table 
+     @Entity- specify a class as entity.(seperate/unique class) or the entities are persistence object which stores
+      persistant data into the table of DB.
+     @Table- to create table of perticular entity in DB with name .
+
+     package - javax.persistence for all abv annotations.
+
+Q 11. Why we create Form??
+ans- to hold the from data and to perform validations and initilize dto.
+
+Q 12. why you created DTO classes?
+ans- to create tables through DTO class in DB. DTO-Data Transfer Object, it is persistant data which store in DB.
+
+Q 13. Controllers kese bnae??
+ans- @RestController se and @ResquestMapping sbhi ctlrs pe use kiye h
+     bcz request FE se BE k contlr pe aati h and @RequestMapping me mapped url ko search kr k ctlr ho hit krti h.
+
+Q 14. role of <router-outlet>?
+ans- we used <router-outlet> in app.component.html 
+     it initialises the path comes in url and send url request to app.routing.module.ts
+
+Q 15. To use directives of angular what we did?
+ans- in app.module.ts in imports array we imports FormModule to use Ng directives.
+
+Q 16. Y did we use Usercontext?
+ans- Usercontext is use to manage the session of frontend and backend.
+     in baseCtl we create a method setUserContext over which we use @ModelAttriute Annotation.
+
+      @ModelAttribute
+	public void setUserContext(HttpSession session) {
+		System.out.println("inside setUserContext --");
+		userContext = (UserContext) session.getAttribute("userContext");
+		if (userContext == null) {
+			UserDTO dto = new UserDTO();
+			mailto:dto.setloginid("root@sunilos.com");
+			dto.setFirstName("demo firstName");
+			dto.setLastName("demo lastName");
+			dto.setOrgId(0L);
+			dto.setRoleId(1L);
+			dto.setOrgName("root");
+			userContext = new UserContext(dto);
+		}
+
+	}
+
+Q 17. Y we use @ModelAttribute?
+ans- It is a method level annotation, which use to map/bind a method parameter 
+
+Q 18. Auth service?
+ans- It is the single intercepter for all the httpRequest between the 2 servers.
+
+Q 19. @param in FE?
+ans- By using this annotation we don't need to define the type of the parameter.
+
+Q 20. Why we use NPM to install Angular?
+ans-npm is node package manager, For angualr firstly we install node.js which provide us with NPM package manager,
+    Angular CLI depends on NPM package manager for many feature and function.
+
+Q 21. Hash ka use kyu kiya h, hash kya kr rha h?
+ans-  app.routing.module.ts me RouterModule.forRoot(route,{useHash:true}) bcz jb ham FE me project deploy krte h 
+      tw use ek folder ORS me hold krwate h and project localhost:8080/ORS/ pe run hota h and uske baad k url ko
+      match krne k liye hamne # ka use kiya h taki usko path find out krne me and reload hone me problem na aae.
+
+
+Q 22. OnInit interface ko konse component me impliment kiya h or vahi kyu kiya?
+ans-  har component pe hamne ye interface ko impliment kiya h jo ki component ki lyfcycle ko manage krti h.
+      Oninit interface ki methods NgOninit sabhi components me provide ho rhi h jo component ko initialize krti h.
+
+Q 23. Why we use Lamda expression?
+ans-  it's a feature of java 8.
+      and used to extract methods of interface using lamda expression.
+
+Q 24. TypedQuery kya krta h?
+ans- Its instance is create to prepare a query for execution and It define the type of query result at run time.
+
+Q 25. getDTOClass?
+ans- An abstract method in BaseDAOimp class which will override by all DAO classes. 
+     that return the same dto class.
+
+Q 26. subscribe()?
+ans- It is method of observable object which fetchs the data from url of get or post method.
+     it holds 3 parameter next(), error(), complete()...or can say Success and fail parameter
+     next hold success and error hold fail and complete holds all the process either success or fail.
+     success and fail return type is function bcz it brings data in callback func thus we return a function.
+
+Q 27. ActivatedROute?
+ans- it fetches the variable from current routing.
+
+Q 28. Diff btw href and RouterLink?
+ans- 1. routerLink is fast as compair to href.
+     2.routerLink is of angular FW where as href is of HTML.
+     3.routerLink will update on the current page while href send request to all the page and 
+       reload the current page. 
+
+Q 28. /Auth ka use kyu kiya h?
+ans- Logged in hone se pehle k sabhi urls me hame /Auth ka use kiya h authentication perform krne k liye.
+
+Q 29. What is returned by HttpClient's get and post method?
+ans- observable object, and we get data from observable object by .subscribe()
+
+Q 30. Reset button and exit button pe click krne pe kya hota h?
+ans- location.reload() hota h. its reload the current page.
+
+Q 31. What is locale?
+ans- it is the set of preferences.
+
+Q 32. Why we use main() in startup file?
+ans- It is used to execute java programs line by line till the completion. it is predefined and called by JVM 
+     to start execute a program.
+
+Q 33. Why we extend startup file with SpringBootServletInitializer?
+ans- it is use to run the spring application from the traditonal way of WAR deployment on external server.
+
+Q 34. SpringApplication.run(class,string)??
+ans- SpringApplication is class which used to launch the spring application of java inside main method.
+     .run - is method of springapplication class which is used to run the spring application.
+
+Q 35. When user get logged in then which method is called?
+ans- authenticate.
+
+Q 36. Why we create a class ORSresponse?
+ans- it contains the rest response to be send to the FE.
+
+Q 37. Why @ViewChildren decorator is used.?
+ans- It is used to get the querylist element. Whenever the child element added,removed or moved the querylist get
+     updated. And any changes in the element will give a new value which is observed by @ViewChildren.
+
+     QueryList- umodified list of items.
+
+Q 38. why we use Router ??
+ans- its an NgModule that provides navigation and url manipulation capabilities.
+     That has 2 methods-
+     1. navigate()-Router.navigate method accepts an array of URL segments. 
+     eg- router.navigate(['/','user']);
+
+     2. navigateByUrl()-its accepts the absolute path or it accepts a string that specifies the URL.
+     eg- router.navigateByUrl('/user');
+
+Q 39.req.getServletPath???
+ans- requested URL se path ko get krta h.
+
+Q 40. @EnableWebSecurity???
+ans- It automatically enables the web security define by WebSecurityConfigurerAdapter.
+
+Q 41.How many types of directives??
+ans- 3 types of directive--
+     1.Component-- @component
+     2.Attribute-- NgModel
+     3.Structured-- ngIf ,ngFor.
+
+Q 42. Selector of component did what?
+ans- it is used to mapp the component.
+
+Q 43. What does Actuator do??
+ans - for this we add dependency spring-boot-starter-Actuator in pom.xml.
+      it is use to provide operational information of the running application-like-health,environment etc.
+      for exposing operational information it uses HTTP endpoints.

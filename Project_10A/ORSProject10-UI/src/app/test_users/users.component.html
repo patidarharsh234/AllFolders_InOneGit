@@ -1,0 +1,209 @@
+<app-navbar></app-navbar>
+<style>
+  .grad {
+    background-image: linear-gradient(to bottom right, rgb(32, 168, 168), rgb(219, 231, 237));
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding-bottom: 25px;
+  }
+
+  .log1 {
+    padding-top: 13%;
+  }
+
+  .input-group-addon {
+    box-shadow: 9px 8px 7px #001a33;
+  }
+
+  .full-height {
+    height: 100vh;
+  }
+
+  .centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    bclient-radius: 8px;
+  }
+
+  .btn {
+    margin-right: 8px;
+  }
+</style>
+
+<div class="row 
+            full-height 
+            centered" style="background: url('assets/files/3.jpg') no-repeat center center;
+          background-attachment: fixed;
+           background-size: cover;">
+
+
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body input-group-addon grad">
+        <form name="userForm">
+          <h2 *ngIf="!form.data.id>0" class="text-primary font-weight-bold text-center">{{'Add users' | translate}}</h2>
+          <h2 *ngIf="form.data.id>0" class="text-primary font-weight-bold text-center">{{'Update users' | translate}}
+          </h2>
+
+
+
+          <div *ngIf="!form.error && form.message != null" class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{form.message | translate}}
+          </div>
+
+          <div *ngIf="form.error && form.message != ''" class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{form.message | translate}}
+          </div>
+
+
+
+
+
+          <div class="form-group">
+            <label><b>{{'name' | translate }}</b><span class="required-field"></span></label>
+
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-user-circle grey-text"></i></div>
+              </div>
+
+              <input type="text" name="name" [(ngModel)]="form.data.name" class="form-control"
+                (ngModelChange)="form.data.name = $event.trim()"
+                appcontendAlphabateOnly
+                 maxlength="41" 
+                placeholder="{{'name' | translate}}">
+
+            </div>
+            <span *ngIf="form.inputerror.name != null" class="alertRedColor" style="color: red;">
+              {{form.inputerror.name | translate}}</span>
+          </div>
+
+
+
+
+          <div class="form-group">
+            <label><b>{{'login' | translate }}</b><span class="required-field"></span></label>
+
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-user-circle grey-text"></i></div>
+              </div>
+
+              <input type="text" name="login" [(ngModel)]="form.data.login" class="form-control"
+                (ngModelChange)="form.data.login = $event.trim()"
+                 maxlength="31" 
+                placeholder="{{'login' | translate}}">
+
+            </div>
+            <span *ngIf="form.inputerror.login != null" class="alertRedColor" style="color: red;">
+              {{form.inputerror.login | translate}}</span>
+          </div>
+
+
+
+
+          <div class="form-group">
+            <label><b>{{'password' }}</b><span class="required-field"></span></label>
+
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-user-circle grey-text"></i></div>
+              </div>
+
+              <input type="password" name="password" [(ngModel)]="form.data.password" class="form-control"
+                (ngModelChange)="form.data.password = $event.trim()"
+                 maxlength="25" 
+                placeholder="{{'password' | translate}}">
+
+            </div>
+            <span *ngIf="form.inputerror.password != null" class="alertRedColor" style="color: red;">
+              {{form.inputerror.password | translate}}</span>
+          </div>
+
+
+          
+
+
+
+
+
+          <div class="form-group">
+            <label><b>{{'dateOfBirth' | translate }}</b><span class="required-field"></span></label>
+
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-table grey-text"></i></div>
+              </div>
+
+              <input type="date" [value]="form.data.dateOfBirth |date:'yyyy-MM-dd'"
+                (input)="form.data.dateOfBirth=parseDate($event.target.value)" class="form-control form-control-sm"
+                required />
+            </div>
+
+            <span *ngIf="form.inputerror.dateOfBirth != null" class="alertRedColor" style="color: red;">
+              {{form.inputerror.dateOfBirth | translate}}</span>
+          </div>
+
+
+
+
+          <div class="form-group">
+            <label><b>{{'mobile'}}</b><span class="required-field"></span></label>
+
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fa fa-user-circle grey-text"></i></div>
+              </div>
+
+              <input type="number" name="mobile" [(ngModel)]="form.data.mobile" class="form-control"
+               
+                
+                placeholder="{{'plse Enter mobile No'}}">
+
+            </div>
+            <span *ngIf="form.inputerror.mobile != null" class="alertRedColor" style="color: red;">
+              {{form.inputerror.mobile | translate}}</span>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <div class="row pt-2 pl-2 pb-3">
+            <div class="col-md-3"></div>
+            <div class="pt-2">
+              <button *ngIf="!form.data.id>0" (click)="onUpload()" class="btn btn-success">{{'Save' |
+                translate}}</button>
+              <button *ngIf="form.data.id>0" (click)="onUpload()" class="btn btn-success">{{'Update' |
+                translate}}</button>
+            </div>
+            <div class="col-md-1"></div>
+
+            <div class="pt-2">
+              <a class="btn btn-warning mr-1" type="button" [routerLink]="['/userslist']"
+              style="text-decoration: none; color: white;">{{'users List' | translate }}</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+<app-footer></app-footer>

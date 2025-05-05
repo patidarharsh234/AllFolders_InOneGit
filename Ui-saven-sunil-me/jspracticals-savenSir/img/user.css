@@ -1,0 +1,35 @@
+
+.dropdownbtn {
+    background-color: black;
+    border: none;
+    padding: 5px;
+    color: white;
+    font-size: 10;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+}
+
+.dropdown {
+    display: inline-block;
+    position: relative
+}
+
+.dropdown-content a {
+    display: block;
+    background-color: white;
+    color: black;
+    min-width: 120px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+body{
+    background-image: url(bg_reg.jpg);
+}
+

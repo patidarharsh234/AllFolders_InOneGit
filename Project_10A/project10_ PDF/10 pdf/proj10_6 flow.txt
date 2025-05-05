@@ -1,0 +1,493 @@
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+3> forgate password======copy
+........................................................
+
+4>Auth service
+
+ AuthService implements HttpInterceptor {
+  intercept(req: HttpRequest<any>, next: HttpHandler) {
+
+    if (localStorage.getItem('fname') && localStorage.getItem('token')) {
+     
+        setHeaders: {
+        "withCredentials" : "true",
+        "name" : "Aakash",
+        
+  
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+select all---
+<input type="checkbox"  (change)="checkUncheckAll($event)
+......................................................................................................
+select single check box
+<input type="checkbox"  (change)="checklistUpdate()"
+.........................................................
+admin diasable 
+ [disabled]="m.roleName=='Admin'
+.................................................................
+next= 
+nextlist==0 kia h
+
+baselistcomponent.ts pe 
+form.pageNo++;
+display();  cl kia h
+..............................................................................................................................................
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+delete
+click event -deletemany fuction
+
+baselistcomponet.ts
+deletemanyfuction
+
+
+
+checkbox.for each se element iterate kia            
+
+condition check 
+element.nativeElement checked
+
+deleterecordlist ki push me  element.nativeelementid pass ki
+
+isrecordselected true
+super ki deletemany
+ super.deleteMany                   basecomponet.ts p bni h
+
+
+backend---pe gye  
+deletemany basectl pe bnani h4
+
+
+
+
+@PostMapping("deleteMany/{ids}")
+ deleteMany(@PathVariable 
+ ids, @RequestParam("pageNo") String pageNo,@RequestBody F form) {
+		
+
+		ORSResponse res = new ORSResponse(true);
+		
+			for (String id : ids) {
+				
+				baseService.delete(Long.parseLong(id)
+                  T dto = (T) form.getDto();
+			list = baseService.search(dto, Integer.parseInt(pageNo), pageSize
+                  res.setSuccess(true);
+			res.addMessage("Records Deleted Successfully");
+			
+............................................................................................................................
+=
+
+
+base service delete me basedao ki delete
+basedao me entity manager ki remove ko cl kia h
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+api hit ki(basectl) and vha form.data.id=0;
+html pr conditon check ki 
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+LIST
+navbar component.html-------routerlink-userlist
+app routing module.ts-------path dia
+userlistcomponent.ts me base listctl  ko extend kia baselistctl me basectl 
+
+basectl- implent kia ngoninit
+search method cl hue
+api----servicelocator.httpservice.post(serch +/+form.pageno ) append kia
+
+
+bakeend pe--
+
+userctl par basectl ko extend kia
+basectl me search
+search @requestbody f form , @pathvariable int pageno
+
+ors responcev obj bnaya
+
+res.add me baseservice ki search ko cl kia 
+ baseservice me basedao ki search list type ki h 
+
+typequery query=createcriteria (dto)
+
+pgination
+
+pagesize>0
+
+query.serfirstresult(pageno* pagesize)
+query.setmaxresult(pagesize) pass kia 
+
+query.getresultlist ko cl kia
+list return
+
+front end me 
+res-callback fuction me
+res.result.data=form.list
+
+ngfor=let m of form of list
+m ko iterpolution k trought print krwaya
+....................................................................................
+preload.......
+httpservice ki get....preload cl hue
+
+backend userctl
+@getmapping(/preload)
+preload
+
+orsresponce res= new orsresponce
+roledto ka obj bnaya
+dto.setstatus me roledto ko active kia 
+
+roleservice ki serch method (dto) =list
+
+res.addresult me (list, rolelist)
+return res
+
+frontend
+res.result = form.preload.rolelist=obj
+
+ ............................................................................
+image kese lgai h
+
+userlist component.html pe
+ngif="m.imageid" ho to backend ki api hit hogi
+
+<img src="localhost:8080/user/propfilepic/{{m.id}}"
+
+@getmapping(profileOic/userid)
+public @ResponseBody dowenlodPic @pathvarible id()
+
+userdto userdto=  baseservice . findbyid(userid)
+
+attachmenmtdto attachment dto = attechmentservice ki findbyid
+
+attechmentdto != null 
+
+response.setcontetype(attechmemtdto.gettype)
+outputstream out= response.getoutputstream
+out.write(attechmentdto.getdoc)
+out.close
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+image uploadQQ
+
+usercomponent.html me
+
+<input type="file" name="imageId" (change)="onFileSelect($event.target.files)">
+
+usercomponent.ts me
+
+onFileSelect(files: FileList) {
+    this.fileToUpload = files.item(0);
+
+onupload
+summit
+    
+
+ 
+  myFile() {
+  
+    this.onSubmitProfile
+
+  }
+
+  onSubmitProfile
+    formData obj bnaya 
+ 
+    formData.append('file', fileToUpload);
+  
+  httpClient.post(User/profilePic/" + this.form.data.id, formData);
+
+
+backend pe
+userctl;-
+
+@PostMapping("/profilePic/{userId}")
+	 uploadPic(@PathVariable Long userId, @RequestParam("file") MultipartFile file,
+		
+		UserDTO userDTO = baseService.findById
+
+		AttachmentDTO doc = new AttachmentDTO(file);
+
+		doc.setDescription("Profile picture");
+		
+		doc.setPath(req.getServletPath());
+			doc.setUserId(userId);
+	
+
+		if (userDTO.getImageId() != null && userDTO.getImageId() > 0) {
+			doc.setId(userDTO.getImageId());
+		
+		Long imageId = attachmentService.save(doc, userContext);
+		
+		// Update new image id
+		if (userDTO.getImageId() == null || userDTO.getImageId() == 0) {
+			userDTO.setImageId(imageId);
+			baseService.update(userDTO, userContext);
+		}
+
+		ORSResponse res = new ORSResponse();
+		res.setSuccess(true);
+		res.addResult("imageId", imageId);
+
+		return res;
+
+
+
+
+..................................................................................................
+DATA FEEL KESE A RHA H UPDATE P
+EDIT  
+USELISTCOMPONENT
+
+
+HTML- (click)="forward( '/user/' +  m.id)" 
+
+TS-
+
+basectl-
+
+constructor: ServiceLocatorService, 
+
+ serviceLocator.getPathVariable
+
+ngOnInit() {
+    this.preload();
+    if (this.form.data.id && this.form.data.id > 0) {
+      this.display();
+    }
+  }
+
+display() {
+
+    var _self = this;
+    this.serviceLocator.httpService.get(_self.api.get + "/" + _self.form.data.id, function (res) {
+ 
+Backend-->
+
+@GetMapping("get/{id}")
+	public ORSResponse get(@PathVariable long id) {
+                ORSResponse res = new ORSResponse(true);
+		T dto = baseService.findById(id, userContext);
+		if (dto != null) {
+			res.addData(dto);
+		} else {
+			res.setSuccess(false);
+		}
+		return res;
+	}  
+
+FRONT END
+      
+
+res.result.data ko form.data.id me hold kia
+
+usercomponrnt.html p condition check ki 
+form.data.id>o ho to  update user
+
+form.data s data nikalege
+
+form.data.firstname
+form.data.lastname
+...................................
+
+
+
+.....................................................................................................................
+SERACH
+<input type="date"  [(ngModel)]="form.searchParams.dob"
+           
+ <button (click)="submit()" 
+
+ BaseListCtl extends BaseCtl {  
+submit() search();
+
+BaseCtl 
+search() {
+serviceLocator.httpService.post(_search + "/" + pageNo, searchParams) {
+
+Backend-->
+ BASECTL
+        @RequestMapping(value = "/search/{pageNo}
+	public ORSResponse search(@RequestBody F form, @PathVariable int pageNo) {
+
+		
+		T dto = (T) form.getDto();
+
+		ORSResponse res = new ORSResponse(true);
+BASESERVICE KI SERCH
+BASEDAO KI SERCH
+
+
+ TypedQuery<T> query = createCriteria
+	     
+
+
+createCriteria-BASE DAO ME
+	     
+	CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+       CriteriaQuery<T> cq = builder.createQuery
+       Root<T> qRoot = cq.from
+      cq.select(qRoot);
+      whereClause = getWhereClause(dto, builder, qRoot)			
+USEDAO IMP
+         getWhereClause
+
+	           if (isNotNull(dto.getDob())) {
+
+			whereCondition.add(builder.equal(qRoot.get("dob"), dto.getDob()));
+
+............................................................................................................................
+backedfront ctl
+
+@compaonent
+
+frontctl class bnai  handler interseptor addapter s extend kia h h
+
+2 method 
+prehandler
+posthandler
+projectorsapplication me
+addinterceptor overide kia
+
+addInterceptors(InterceptorRegistry registry) {
+			 * registry.addInterceptor(frontCtl).addPathPatterns("/**").excludePathPatterns(
+			 * "/Auth/**"); }
+			
+
+
+
+                                           notpathstartwith/auth
+..........................................................................................................................................
+frontend front ctl
+
+
+httpservice class=== is logout method bnai
+
+localstorage.getitem(fanme)= jasassionid 
+
+jsessinid==null && this.router.url!login      auth     logout     forgatepassword     signup      ho to
+
+form.messge me msg dia    login p nevigate kia iterpolution s print kia 
+
+............................................................................................................................................................................
+
+api
+
+login k bad servicelocters strat hoge fir 
+
+serch
+
+httpservice ki post(serch +/ +form.pagen+ form.serachparam)
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+edit- display
+ httpservice get (get  + / +form.data.id)
+
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+adduser/ upadate
+httpservice post (save/ form.dATA)
+
+...................................................................
+DELETEMANY
+HTTPSERVICE POST (DELETEMANY + ID+ FORM.DATA)
+
+..................................................................
+PRELAOD
+HTTPSERVICE GET(PRELOAD)
+...........................................................................................................................................
+
+
+
+
+
+
+int x=0;
+int y =0;
+
+
+for(int i=0; i<name.lenght(); i++){
+
+if(name.charAt(i)=='a'||name.{
+x++;
+
+sout name.charat(i);
+
+}
+else if(name.chartat(i)>='a' && name.chaat(i)<='z')
+}
+}
+sout(x)
+sout(y)
+
+...................................................
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

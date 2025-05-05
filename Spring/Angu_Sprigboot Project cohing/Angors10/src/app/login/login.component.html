@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+<!-- formate->ager veiw ko hit karoge to pahle Ts pr aayega koi ngOnInIt methode me perform karaya to use perform karvane backend
+  pr jayega or nhi to html pr -->
+
+
+
+<div align="center">
+    <h1 style="color: navy;">Login</h1>
+
+
+    <div align="center" class="error" *ngIf="form.error && form.message">
+        {{form.message}}
+    </div>
+
+    
+
+
+    <table>
+        <tr>
+            <th>Login :</th>
+            <td><input type="text" name="loginId" [(ngModel)]="form.loginId" /> </td>
+            <td *ngIf="inputerror.loginId !==null" class="error">{{inputerror.loginId}}</td>
+        </tr>
+        <tr>
+
+            <th>Password :</th>
+            <td><input type="text" name="Password" [(ngModel)]="form.password" /> </td>
+            <td *ngIf="inputerror.password !==null" class="error">{{inputerror.password}}</td>
+        </tr>
+
+        <tr>
+            <th></th>
+            <td>
+                <button (click)="singnIn()">signIn</button>
+                <button (click)="signUp()">signUp</button>
+            </td>
+        </tr>
+
+    </table>
+
+</div>
+<app-footer></app-footer>

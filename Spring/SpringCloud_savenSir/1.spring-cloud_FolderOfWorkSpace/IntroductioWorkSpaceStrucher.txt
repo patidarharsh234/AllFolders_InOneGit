@@ -1,0 +1,3 @@
+1. All folders are individually workspace .
+2. Access any Cloud Topic individually then use individually workspace .
+3. All 7 point target directly its not possible . 

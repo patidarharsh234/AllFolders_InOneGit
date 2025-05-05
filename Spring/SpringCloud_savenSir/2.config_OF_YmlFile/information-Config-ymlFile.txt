@@ -1,0 +1,4 @@
+1. esme jo configuration he yml files ki .
+2. enhe phle git pr repogetry create kr add krte he.
+3. then each spring cloud project server ki config-server vale folder me resources me yml file me us git repogetry ka path set krte he.
+4.  and ye configuration git ki repogitry se load krta he.

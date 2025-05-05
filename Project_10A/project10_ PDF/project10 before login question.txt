@@ -1,0 +1,59 @@
+1.sbse phle konsi file run hoti h?
+2. hash ka use kyu kiya h?
+3.kese use kiya h?ky kia h angular pr eske liye?
+4.wht is spring boot wht is angular?
+5. sari api yadd krna?
+6. api testing ke liye ky kiya h?
+7.language ke liye ky kiya h?
+8.bootstrap kese conf kiya?
+9.navbar and footer kese lgayyaa?
+10.rays li link kese banayi h ?image ko responsive kese banaya?
+11. dropdown ke liye ky kiya?
+12.button kese banayi?
+13. one way data binding kese kri?
+14.two eay binding kese kri?
+15.sign in ka flow?
+16.auth kese work krti h and auth ke ander ky ky kiya?
+17.fontawsm vale icons?
+18.password kese match karaya?
+19.input and bussiness validations?
+20.validate kese banayi ky kiya h uske ander?
+21.binding result ka ky kam hota?
+22.msg kese aare h bussiness or input bale kaha se aare h kese show hore h ?
+23.translate ke liye ky kiya ?
+24.configuration vali file konsi h ?
+25.root file konsi h?
+26.pasword kese jaa rha h forgt password vala?msg kaha se aaare h ?
+27.reset buttton disable kyu h ?
+28.bussiness vaidation kese hoga ?
+29.bydefault kon register ho rha h ?
+30.input and bussinesss validations ?preload gender ki?
+fields kese banai h ?
+31.controller kese banaya h?
+32.frntend service kese banayi h
+33.manually component and service create krna ?
+34.anotations sare?
+35.frontend koh backend se kese connect kiya ?
+36.sari chijo ke full form
+ ajax,css,cors,html,xml,ts,dao,dto,dcp
+37.sare design patterns?
+38.layers kitni hn?
+39.dcp kese configure kiya or jpa?
+40.application.properties ke ander ky ky kiya h ?
+port no. ky h?
+
+
+41. Spring or spring boot diff?
+42.single page application kese banayi?
+--router outlet tag ka use kiya h appcomponent.html pr
+43.
+
+
+
+
+
+
+
+
+
+
